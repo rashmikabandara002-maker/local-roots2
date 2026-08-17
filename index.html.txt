@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Roots Salon | Downtown Pataskala</title>
+  <meta name="description" content="A brand-new, fully renovated salon in Downtown Pataskala — founded by two best friends as a shared dream. Relax, pamper, and leave feeling like you.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       CSS CUSTOM PROPERTIES
+       ============================================ */
+    :root {
+      --terracotta: #C2725F;
+      --terracotta-dark: #A85A48;
+      --terracotta-light: #D4917F;
+      --blush: #E8C4B8;
+      --blush-light: #F2DDD4;
+      --cream: #FDF6F0;
+      --cream-dark: #F5EAE0;
+      --charcoal: #2D2926;
+      --charcoal-light: #4A4440;
+      --charcoal-mid: #6B6560;
+      --warm-gray: #9B9490;
+      --warm-gray-light: #C9C3BE;
+      --white: #FFFFFF;
+
+      --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2.5rem;
+      --space-xl: 4rem;
+      --space-2xl: 6rem;
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 2px 8px rgba(45, 41, 38, 0.06);
+      --shadow-md: 0 4px 20px rgba(45, 41, 38, 0.08);
+      --shadow-lg: 0 8px 40px rgba(45, 41, 38, 0.12);
+      --shadow-card-hover: 0 12px 40px rgba(45, 41, 38, 0.14);
+
+      --transition-fast: 150ms ease;
+      --transition-base: 300ms ease;
+      --transition-slow: 500ms ease;
+
+      --header-height: 80px;
+    }
+
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--header-height);
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: var(--charcoal);
+      background-color: var(--cream);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--charcoal);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: var(--font-body);
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    /* ============================================
+       UTILITY
+       ============================================ */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    .container--narrow {
+      max-width: 800px;
+    }
+
+    .section-padding {
+      padding: var(--space-2xl) 0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ============================================
+       BUTTONS
+       ============================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.875rem;
+      letter-spacing: 0.03em;
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius-full);
+      transition: all var(--transition-base);
+      text-transform: uppercase;
+    }
+
+    .btn--primary {
+      background-color: var(--terracotta);
+      color: var(--white);
+      box-shadow: 0 4px 15px rgba(194, 114, 95, 0.3);
+    }
+
+    .btn--primary:hover {
+      background-color: var(--terracotta-dark);
+      box-shadow: 0 6px 25px rgba(194, 114, 95, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn--secondary {
+      background-color: transparent;
+      color: var(--terracotta);
+      border: 2px solid var(--terracotta);
+    }
+
+    .btn--secondary:hover {
+      background-color: var(--terracotta);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn--small {
+      font-size: 0.8rem;
+      padding: 0.65rem 1.5rem;
+    }
+
+    /* ============================================
+       SECTION HEADERS
+       ============================================ */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: var(--space-md);
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--charcoal-mid);
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .section-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: var(--space-md) 0;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background-color: var(--blush);
+    }
+
+    .divider-icon {
+      color: var(--terracotta-light);
+      font-size: 1rem;
+    }
+
+    /* ============================================
+       HEADER
+       ============================================ */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      transition: all var(--transition-base);
+      background-color: transparent;
+    }
+
+    .header.scrolled {
+      background-color: rgba(253, 246, 240, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(45, 41, 38, 0.06);
+      height: 64px;
+    }
+
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .header__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      z-index: 1001;
+    }
+
+    .header__logo-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header__logo-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .header__logo-text {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.1;
+    }
+
+    .header__logo-text small {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-top: 2px;
+    }
+
+    .header__nav {
+      display: none;
+    }
+
+    .header__nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+
+    .header__nav-link {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--charcoal-light);
+      transition: color var(--transition-fast);
+      position: relative;
+    }
+
+    .header__nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--terracotta);
+      transition: width var(--transition-base);
+    }
+
+    .header__nav-link:hover {
+      color: var(--terracotta);
+    }
+
+    .header__nav-link:hover::after {
+      width: 100%;
+    }
+
+    .header__book-btn {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 1001;
+      padding: 4px;
+    }
+
+    .hamburger__line {
+      width: 24px;
+      height: 2px;
+      background-color: var(--charcoal);
+      border-radius: 2px;
+      transition: all var(--transition-base);
+      transform-origin: center;
+    }
+
+    .hamburger.active .hamburger__line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active .hamburger__line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .hamburger__line:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      max-width: 400px;
+      height: 100vh;
+      background-color: var(--cream);
+      z-index: 999;
+      padding: calc(var(--header-height) + var(--space-xl)) var(--space-lg) var(--space-lg);
+      transition: right var(--transition-slow);
+      box-shadow: -10px 0 40px rgba(45, 41, 38, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-menu.open {
+      right: 0;
+    }
+
+    .mobile-menu__overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(45, 41, 38, 0.3);
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-base);
+    }
+
+    .mobile-menu__overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu__links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xl);
+    }
+
+    .mobile-menu__link {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      padding: var(--space-xs) 0;
+      border-bottom: 1px solid var(--blush-light);
+      transition: color var(--transition-fast);
+    }
+
+    .mobile-menu__link:hover {
+      color: var(--terracotta);
+    }
+
+    .mobile-menu__book {
+      margin-top: auto;
+    }
+
+    .mobile-menu__book .btn {
+      width: 100%;
+    }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--charcoal);
+      background-image:
+        linear-gradient(135deg, rgba(45, 41, 38, 0.7) 0%, rgba(45, 41, 38, 0.4) 50%, rgba(194, 114, 95, 0.3) 100%),
+        url('https://picsum.photos/seed/salon-interior/1600/900.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .hero__content {
+      text-align: center;
+      padding: var(--space-xl) var(--space-md);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero__label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: var(--space-md);
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.2s forwards;
+    }
+
+    .hero__title {
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: var(--space-md);
+      line-height: 1.05;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.4s forwards;
+    }
+
+    .hero__title em {
+      font-style: italic;
+      color: var(--blush);
+    }
+
+    .hero__tagline {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--blush-light);
+      max-width: 520px;
+      margin: 0 auto var(--space-lg);
+      line-height: 1.8;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.6s forwards;
+    }
+
+    .hero__cta {
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.8s forwards;
+    }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: var(--space-lg);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--blush-light);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 1.2s forwards;
+    }
+
+    .hero__scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--blush-light), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.2); }
+    }
+
+    /* ============================================
+       FOUNDERS SPOTLIGHT (new section)
+       ============================================ */
+    .founders {
+      background-color: var(--cream-dark);
+      padding: var(--space-2xl) 0;
+    }
+
+    .founders__image-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .founders__image-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .founders__caption {
+      text-align: center;
+      margin-top: var(--space-lg);
+    }
+
+    .founders__caption .section-label {
+      text-align: center;
+    }
+
+    .founders__caption h2 {
+      font-size: clamp(1.8rem, 4.5vw, 2.75rem);
+      margin-bottom: var(--space-sm);
+    }
+
+    .founders__caption p {
+      font-size: 1.05rem;
+      color: var(--charcoal-mid);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .founders__caption .about__signature {
+      margin-top: var(--space-md);
+    }
+
+    /* ============================================
+       ABOUT
+       ============================================ */
+    .about {
+      background-color: var(--cream);
+    }
+
+    .about__grid {
+      display: grid;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .about__image {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+    }
+
+    .about__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about__image-accent {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 120px;
+      height: 120px;
+      background-color: var(--blush-light);
+      border-radius: var(--radius-lg);
+      z-index: -1;
+    }
+
+    .about__text .section-label {
+      text-align: left;
+    }
+
+    .about__text .section-title {
+      text-align: left;
+    }
+
+    .about__story {
+      font-size: 1.05rem;
+      color: var(--charcoal-mid);
+      line-height: 1.9;
+      margin-bottom: var(--space-lg);
+    }
+
+    .about__story p + p {
+      margin-top: var(--space-md);
+    }
+
+    .about__signature {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--terracotta);
+    }
+
+    /* ============================================
+       SERVICES
+       ============================================ */
+    .services {
+      background-color: var(--cream-dark);
+    }
+
+    .services__grid {
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .service-card {
+      background-color: var(--white);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background-color: var(--terracotta);
+      opacity: 0;
+      transition: opacity var(--transition-base);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-card__icon {
+      width: 48px;
+      height: 48px;
+      background-color: var(--blush-light);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-md);
+      color: var(--terracotta);
+      font-size: 1.25rem;
+    }
+
+    .service-card__title {
+      font-size: 1.35rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .service-card__items {
+      margin-bottom: var(--space-md);
+    }
+
+    .service-card__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--blush-light);
+      font-size: 0.92rem;
+    }
+
+    .service-card__item:last-child {
+      border-bottom: none;
+    }
+
+    .service-card__service {
+      color: var(--charcoal-light);
+    }
+
+    .service-card__price {
+      font-weight: 600;
+      color: var(--terracotta);
+      white-space: nowrap;
+    }
+
+    .service-card__note {
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+      font-style: italic;
+    }
+
+    /* ============================================
+       GALLERY
+       ============================================ */
+    .gallery {
+      background-color: var(--cream);
+    }
+
+    .gallery__grid {
+      display: grid;
+      gap: var(--space-sm);
+    }
+
+    .gallery__item {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 1;
+    }
+
+    .gallery__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery__item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(45, 41, 38, 0.6), transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition-base);
+      display: flex;
+      align-items: flex-end;
+      padding: var(--space-md);
+    }
+
+    .gallery__item:hover .gallery__overlay {
+      opacity: 1;
+    }
+
+    .gallery__overlay-text {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--white);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background-color: rgba(45, 41, 38, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-base);
+    }
+
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox__img {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: var(--radius-sm);
+      object-fit: contain;
+      transform: scale(0.9);
+      transition: transform var(--transition-base);
+    }
+
+    .lightbox.open .lightbox__img {
+      transform: scale(1);
+    }
+
+    .lightbox__close {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-full);
+      color: var(--white);
+      font-size: 1.5rem;
+      transition: background var(--transition-fast);
+    }
+
+    .lightbox__close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ============================================
+       TEAM
+       ============================================ */
+    .team {
+      background-color: var(--cream-dark);
+    }
+
+    .team__grid {
+      display: grid;
+      gap: var(--space-lg);
+    }
+
+    .team-card {
+      background-color: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-base);
+      text-align: center;
+    }
+
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .team-card__photo {
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .team-card__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .team-card:hover .team-card__photo img {
+      transform: scale(1.05);
+    }
+
+    .team-card__info {
+      padding: var(--space-lg) var(--space-md) var(--space-md);
+    }
+
+    .team-card__name {
+      font-size: 1.35rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .team-card__role {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: var(--space-sm);
+    }
+
+    .team-card__bio {
+      font-size: 0.9rem;
+      color: var(--charcoal-mid);
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+    }
+
+    .team-card__phone {
+      font-size: 0.85rem;
+      color: var(--warm-gray);
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .team-card__phone svg {
+      width: 14px;
+      height: 14px;
+      color: var(--terracotta);
+    }
+
+    /* ============================================
+       CONTACT
+       ============================================ */
+    .contact {
+      background-color: var(--cream);
+    }
+
+    .contact__grid {
+      display: grid;
+      gap: var(--space-xl);
+    }
+
+    .contact__info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .contact__block h3 {
+      font-size: 1.15rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .contact__block p,
+    .contact__block a {
+      font-size: 0.95rem;
+      color: var(--charcoal-mid);
+      line-height: 1.8;
+    }
+
+    .contact__block a:hover {
+      color: var(--terracotta);
+    }
+
+    .contact__phone {
+      font-size: 1.25rem !important;
+      font-weight: 600;
+      color: var(--charcoal) !important;
+    }
+
+    .contact__social {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-xs);
+    }
+
+    .contact__social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background-color: var(--blush-light);
+      border-radius: var(--radius-full);
+      color: var(--terracotta);
+      transition: all var(--transition-fast);
+    }
+
+    .contact__social-link:hover {
+      background-color: var(--terracotta);
+      color: var(--white);
+    }
+
+    .contact__map {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      aspect-ratio: 16 / 10;
+      min-height: 300px;
+      background-color: var(--cream-dark);
+      position: relative;
+    }
+
+    .contact__map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .booking-cta {
+      background-color: var(--charcoal);
+      padding: var(--space-xl) 0;
+      text-align: center;
+    }
+
+    .booking-cta__title {
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+
+    .booking-cta__text {
+      color: var(--warm-gray-light);
+      margin-bottom: var(--space-lg);
+      font-size: 1rem;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      background-color: var(--charcoal);
+      padding: var(--space-xl) 0 var(--space-md);
+    }
+
+    .footer__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-lg);
+      text-align: center;
+    }
+
+    .footer__logo {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .footer__logo small {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta-light);
+      margin-top: 4px;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-md);
+    }
+
+    .footer__link {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      transition: color var(--transition-fast);
+    }
+
+    .footer__link:hover {
+      color: var(--terracotta-light);
+    }
+
+    .footer__social {
+      display: flex;
+      gap: var(--space-sm);
+    }
+
+    .footer__social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--warm-gray-light);
+      transition: all var(--transition-fast);
+    }
+
+    .footer__social-link:hover {
+      border-color: var(--terracotta);
+      color: var(--terracotta);
+    }
+
+    .footer__divider {
+      width: 100%;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .footer__bottom {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+    }
+
+    .footer__address {
+      font-style: normal;
+    }
+
+    /* ============================================
+       RESPONSIVE — Tablet (768px+)
+       ============================================ */
+    @media (min-width: 768px) {
+      .about__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .services__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .gallery__item:first-child {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      .team__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .founders__image-wrap {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE — Desktop (1024px+)
+       ============================================ */
+    @media (min-width: 1024px) {
+      .header__nav {
+        display: flex;
+      }
+
+      .header__book-btn {
+        display: inline-flex;
+      }
+
+      .hamburger {
+        display: none;
+      }
+
+      .services__grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .gallery__grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .gallery__item:first-child {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      .team__grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* ============================================
+       FOCUS / ACCESSIBILITY
+       ============================================ */
+    :focus-visible {
+      outline: 2px solid var(--terracotta);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       HEADER
+       ============================================ -->
+  <header class="header" id="header" role="banner">
+    <div class="container header__inner">
+      <a href="#home" class="header__logo" aria-label="Local Roots Salon — Home">
+        <span class="header__logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4C20 4 8 12 8 22C8 28 13 34 20 34C27 34 32 28 32 22C32 12 20 4 20 4Z" fill="#C2725F" opacity="0.15"/>
+            <path d="M20 6C20 6 10 13 10 22C10 27 14 32 20 32C26 32 30 27 30 22C30 13 20 6 20 6Z" stroke="#C2725F" stroke-width="1.5" fill="none"/>
+            <path d="M20 10V28" stroke="#C2725F" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M20 15C17 13 14 14 14 14" stroke="#C2725F" stroke-width="1" stroke-linecap="round"/>
+            <path d="M20 19C23 17 26 18 26 18" stroke="#C2725F" stroke-width="1" stroke-linecap="round"/>
+            <path d="M20 23C17 21 14 22 14 22" stroke="#C2725F" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="header__logo-text">
+          Local Roots
+          <small>Hair Salon</small>
+        </span>
+      </a>
+
+      <nav class="header__nav" aria-label="Main navigation">
+        <ul class="header__nav-links">
+          <li><a href="#home" class="header__nav-link">Home</a></li>
+          <li><a href="#about" class="header__nav-link">About</a></li>
+          <li><a href="#services" class="header__nav-link">Services</a></li>
+          <li><a href="#gallery" class="header__nav-link">Gallery</a></li>
+          <li><a href="#team" class="header__nav-link">Team</a></li>
+          <li><a href="#contact" class="header__nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="#booking" class="btn btn--primary btn--small header__book-btn">Book Now</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu__overlay" id="mobileOverlay"></div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <ul class="mobile-menu__links">
+      <li><a href="#home" class="mobile-menu__link">Home</a></li>
+      <li><a href="#about" class="mobile-menu__link">About</a></li>
+      <li><a href="#services" class="mobile-menu__link">Services</a></li>
+      <li><a href="#gallery" class="mobile-menu__link">Gallery</a></li>
+      <li><a href="#team" class="mobile-menu__link">Team</a></li>
+      <li><a href="#contact" class="mobile-menu__link">Contact</a></li>
+    </ul>
+    <div class="mobile-menu__book">
+      <a href="#booking" class="btn btn--primary">Book Now</a>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <section class="hero" id="home" aria-label="Welcome">
+    <div class="hero__content">
+      <p class="hero__label">Downtown Pataskala</p>
+      <h1 class="hero__title">Local <em>Roots</em></h1>
+      <p class="hero__tagline">Two best friends. One shared dream. A salon built on small-town warmth and the belief that everyone deserves to feel taken care of.</p>
+      <div class="hero__cta">
+        <a href="#booking" class="btn btn--primary">Book Your Appointment</a>
+      </div>
+    </div>
+    <div class="hero__scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOUNDERS SPOTLIGHT — Amy & Celeste Photo
+       ============================================ -->
+  <section class="founders" id="founders" aria-label="Meet the founders">
+    <div class="container">
+      <div class="founders__image-wrap reveal">
+        <!--
+          REAL PHOTO: Amy & Celeste — the two co-founders of Local Roots Salon.
+          This image shows Celeste (left, redhead, black-and-white plaid scarf)
+          and Amy (right, blonde, plaid jacket) together.
+          Source: Provided by the business owner.
+        -->
+        <img
+          src="https://z-cdn-media.chatglm.cn/files/28a26e90-8030-4bd4-82ee-5689ae541c43.png?auth_key=1886971029-5ccfaecc74c44b23aad0f94c0e8f2130-0-fcb2d14e001f20b698a698b3c0870131"
+          alt="Amy and Celeste — co-founders of Local Roots Salon in Downtown Pataskala"
+          loading="eager"
+        >
+      </div>
+      <div class="founders__caption reveal reveal-delay-2">
+        <p class="section-label">The Founders</p>
+        <h2>Celeste & Amy</h2>
+        <div class="divider">
+          <span class="divider-icon">✦</span>
+        </div>
+        <p>Best friends since they can remember, Celeste and Amy spent years doing hair, swapping stories behind the chair, and dreaming about a space that felt truly theirs. Local Roots is that dream — built side by side, renovated with their own hands, and filled with the kind of warmth you only get when two people genuinely love what they do and who they do it with.</p>
+        <p class="about__signature">— Your friends at Local Roots</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       ABOUT
+       ============================================ -->
+  <section class="about section-padding" id="about" aria-label="About us">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__image reveal">
+          <!-- REPLACE: Swap this placeholder with a real photo of the salon interior -->
+          <img src="https://picsum.photos/seed/salon-cozy/600/750.jpg" alt="Inside Local Roots Salon — warm, renovated interior in Downtown Pataskala" loading="lazy">
+          <div class="about__image-accent" aria-hidden="true"></div>
+        </div>
+        <div class="about__text reveal reveal-delay-2">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title">Built on Friendship,<br>Fueled by Dream</h2>
+          <div class="divider">
+            <span class="divider-icon">✦</span>
+          </div>
+          <div class="about__story">
+            <p>Local Roots started the way most honest things do — over countless conversations between two best friends who kept circling the same idea: <em>what if we built something of our own?</em></p>
+            <p>After years of doing hair, listening to people's stories, and dreaming out loud, we finally found the right spot — a space in Downtown Pataskala that needed some love but had good bones and even better light. We renovated every inch ourselves, and what emerged is a salon that feels like walking into a friend's beautifully kept home.</p>
+            <p>We're not a chain. We're not trying to be the biggest salon in town. We just want to be the place where you can sit down, exhale, and let someone take genuinely good care of you for an hour or two. That's the whole idea.</p>
+          </div>
+          <p class="about__signature">— Amy & Celeste, Co-Founders</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SERVICES
+       ============================================ -->
+  <section class="services section-padding" id="services" aria-label="Services and pricing">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">What We Offer</p>
+        <h2 class="section-title">Services & Pricing</h2>
+        <p class="section-subtitle">Every service includes a consultation so we can make sure you get exactly what you're looking for — no surprises.</p>
+      </div>
+
+      <div class="services__grid">
+        <!-- HAIRCUTS -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+          </div>
+          <h3 class="service-card__title">Haircuts</h3>
+          <div class="service-card__items">
+            <!-- REPLACE: Update prices as needed -->
+            <div class="service-card__item">
+              <span class="service-card__service">Women's Cut & Style</span>
+              <span class="service-card__price">$45+</span>
+            </div>
+            <div class="service-card__item">
+              <span class="service-card__service">Men's Cut</span>
+              <span class="service-card__price">$25+</span>
+            </div>
+            <div class="service-card__item">
+              <span class="service-card__service">Children's Cut (12 & under)</span>
+              <span class="service-card__price">$20+</span>
+            </div>
+            <div class="service-card__item">
+              <span class="service-card__service">Bang Trim</span>
+              <span class="service-card__price">$10</span>
+            </div>
+          </div>
+          <p class="service-card__note">Prices vary by stylist. Consultation included.</p>
+        </div>
+
+        <!-- COLOR -->
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.5-.67 1.5-1.5 0-.5-.17-.87-.46-1.22-.28-.34-.43-.8-.43-1.28 0-1.1.9-2 2-2h2.39c3.1 0 5-2.03 5-5.5C22 6.5 17.5 2 12 2z"/></svg>
+          </div>
+          <h3 class="service-card__title">Color</h3>
+          <div class="service-card__items">
+            <!-- REPLACE: Update prices as needed -->
+            <div class="service-card__item">
+              <span class="service-card__service">Single Process Color</span>
+              <span class="service-card__price">$75+</span>
+            </div>
+            <div class="service-card__item">
+              <span class="service-card__service">Full Highlights</span>
+              <span class="service-card__price">$120+</span>
+            </div>
+            <div class="service-card__item">
+              <span class="service-card__service">Partial Highlights</span>
+              <span class="service-card__price">$85+</span>
+            </div>
+            <div class="service-card__item">
+              <span class="service-card__service">Balayage / Ombre</span>
+              <span class="service-card__price">$150+</span>
+            </div>
+            <div class="service-card__item">
+              <span class="service-card__service">Color Correction</span>
+              <span class="service-card__price">Consult</span>
+            </div>
+          </div>
+          <p class="service-card__note">All color services include a patch test for new clients.</p>
+        </div>
+
+        <!-- STYLING -->
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2"/><path d="M12.59 19.41A2 2 0 1 0 14 16H2"/><path d="M17.73 7.73A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+          </div>
+          <h3 class="service-card__title">Styling</h3>
+          <div class="service-card__items">
+            <!-- REPLACE: Update prices as needed -->
+            <div class="service-card__item">
+              <span class="service-card__service">Blowout & Style</span>
+              <span class="service-card__price">$40+</span>
+            </div>
+            <div class="service-card__item">
+              <span class="service-card__service">Special Occasion Updo</span>
+              <span class="service-card__price">$75+</span>
+            </div>
+            <div class="service-card__item">
+              <span class="service-card__service">Braid Styles</span>
+              <span class="service-card__price">$45+</span>
+            </div>
+            <div class="service-card__item">
+              <span class="service-card__service">Flat Iron / Curl Add-on</span>
+              <span class="service-card__price">$20+</span>
+            </div>
+          </div>
+          <p class="service-card__note">Trial runs available for event styling.</p>
+        </div>
+
+        <!-- TREATMENTS -->
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/><path d="M12 8v4"/><path d="M10 14h4"/></svg>
+          </div>
+          <h3 class="service-card__title">Treatments</h3>
+          <div class="service-card__items">
+            <!-- REPLACE: Update prices as needed -->
+            <div class="service-card__item">
+              <span class="service-card__service">Deep Conditioning Treatment</span>
+              <span class="service-card__price">$35+</span>
+            </div>
+            <div class="service-card__item">
+              <span class="service-card__service">Keratin Smoothing</span>
+              <span class="service-card__price">$200+</span>
+            </div>
+            <div class="service-card__item">
+              <span class="service-card__service">Olaplex Add-on</span>
+              <span class="service-card__price">$25+</span>
+            </div>
+            <div class="service-card__item">
+              <span class="service-card__service">Scalp Treatment</span>
+              <span class="service-card__price">$30+</span>
+            </div>
+          </div>
+          <p class="service-card__note">Ask your stylist which treatment is right for your hair.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       GALLERY
+       ============================================ -->
+  <section class="gallery section-padding" id="gallery" aria-label="Our work gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Our Work</p>
+        <h2 class="section-title">From Our Chairs</h2>
+        <p class="section-subtitle">A little peek at what we do best. Every head of hair tells a story — here are some of our favorite chapters.</p>
+      </div>
+
+      <div class="gallery__grid">
+        <!-- REPLACE: Swap each placeholder with a real photo of stylist work. Recommended size: 600x600px minimum -->
+        <div class="gallery__item reveal" data-caption="Balayage blend by Amy">
+          <img src="https://picsum.photos/seed/stylist-work-1/800/800.jpg" alt="Balayage highlight result — warm blonde blend" loading="lazy">
+          <div class="gallery__overlay"><span class="gallery__overlay-text">Balayage blend</span></div>
+        </div>
+        <div class="gallery__item reveal reveal-delay-1" data-caption="Precision cut by Celeste">
+          <img src="https://picsum.photos/seed/stylist-work-2/600/600.jpg" alt="Precision bob haircut — clean lines" loading="lazy">
+          <div class="gallery__overlay"><span class="gallery__overlay-text">Precision cut</span></div>
+        </div>
+        <div class="gallery__item reveal reveal-delay-2" data-caption="Rich red color by Debbie">
+          <img src="https://picsum.photos/seed/stylist-work-3/600/600.jpg" alt="Rich red single process color" loading="lazy">
+          <div class="gallery__overlay"><span class="gallery__overlay-text">Rich red color</span></div>
+        </div>
+        <div class="gallery__item reveal reveal-delay-1" data-caption="Event updo by Lauren">
+          <img src="https://picsum.photos/seed/stylist-work-4/600/600.jpg" alt="Bridal updo — elegant event styling" loading="lazy">
+          <div class="gallery__overlay"><span class="gallery__overlay-text">Event updo</span></div>
+        </div>
+        <div class="gallery__item reveal reveal-delay-2" data-caption="Dimensional highlights by Amy">
+          <img src="https://picsum.photos/seed/stylist-work-5/600/600.jpg" alt="Dimensional foil highlights" loading="lazy">
+          <div class="gallery__overlay"><span class="gallery__overlay-text">Dimensional highlights</span></div>
+        </div>
+        <div class="gallery__item reveal reveal-delay-3" data-caption="Textured cut by Celeste">
+          <img src="https://picsum.photos/seed/stylist-work-6/600/600.jpg" alt="Textured layered cut with movement" loading="lazy">
+          <div class="gallery__overlay"><span class="gallery__overlay-text">Textured cut</span></div>
+        </div>
+        <div class="gallery__item reveal reveal-delay-2" data-caption="Gloss treatment by Debbie">
+          <img src="https://picsum.photos/seed/stylist-work-7/600/600.jpg" alt="Color gloss treatment result — shiny finish" loading="lazy">
+          <div class="gallery__overlay"><span class="gallery__overlay-text">Gloss treatment</span></div>
+        </div>
+        <div class="gallery__item reveal reveal-delay-3" data-caption="Copper transformation by Lauren">
+          <img src="https://picsum.photos/seed/stylist-work-8/600/600.jpg" alt="Copper color transformation" loading="lazy">
+          <div class="gallery__overlay"><span class="gallery__overlay-text">Copper transformation</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Image lightbox" aria-hidden="true">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close lightbox">✕</button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="">
+  </div>
+
+  <!-- ============================================
+       TEAM
+       ============================================ -->
+  <section class="team section-padding" id="team" aria-label="Our team">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">The Team</p>
+        <h2 class="section-title">Who You'll Sit With</h2>
+        <p class="section-subtitle">Four stylists, four personalities, one shared standard: making sure you leave feeling like the best version of yourself.</p>
+      </div>
+
+      <div class="team__grid">
+        <!-- AMY -->
+        <div class="team-card reveal">
+          <div class="team-card__photo">
+            <!-- REPLACE: Swap with a real portrait of Amy -->
+            <img src="https://picsum.photos/seed/stylist-amy/400/530.jpg" alt="Amy — stylist and co-founder at Local Roots Salon" loading="lazy">
+          </div>
+          <div class="team-card__info">
+            <h3 class="team-card__name">Amy</h3>
+            <p class="team-card__role">Co-Founder & Stylist</p>
+            <!-- REPLACE: Update specialty and bio -->
+            <p class="team-card__bio">Specializes in dimensional color and balayage. Amy's the one who'll talk you through a big color change with patience and honesty — because she genuinely wants you to love it.</p>
+            <p class="team-card__phone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              740.417.6111
+            </p>
+            <a href="#booking" class="btn btn--secondary btn--small">Book with Amy</a>
+          </div>
+        </div>
+
+        <!-- CELESTE -->
+        <div class="team-card reveal reveal-delay-1">
+          <div class="team-card__photo">
+            <!-- REPLACE: Swap with a real portrait of Celeste -->
+            <img src="https://picsum.photos/seed/stylist-celeste/400/530.jpg" alt="Celeste — stylist and co-founder at Local Roots Salon" loading="lazy">
+          </div>
+          <div class="team-card__info">
+            <h3 class="team-card__name">Celeste</h3>
+            <p class="team-card__role">Co-Founder & Stylist</p>
+            <!-- REPLACE: Update specialty and bio -->
+            <p class="team-card__bio">Loves a precision cut and the kind of styling that makes someone light up when they catch their reflection. Celeste brings warmth and calm to every appointment — you'll feel it the minute you sit down.</p>
+            <p class="team-card__phone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              740.739.7171
+            </p>
+            <a href="#booking" class="btn btn--secondary btn--small">Book with Celeste</a>
+          </div>
+        </div>
+
+        <!-- DEBBIE -->
+        <div class="team-card reveal reveal-delay-2">
+          <div class="team-card__photo">
+            <!-- REPLACE: Swap with a real portrait of Debbie -->
+            <img src="https://picsum.photos/seed/stylist-debbie/400/530.jpg" alt="Debbie — stylist at Local Roots Salon" loading="lazy">
+          </div>
+          <div class="team-card__info">
+            <h3 class="team-card__name">Debbie</h3>
+            <p class="team-card__role">Stylist</p>
+            <!-- REPLACE: Update specialty and bio -->
+            <p class="team-card__bio">A seasoned stylist with a gift for rich, vibrant color and making every client feel like family. Debbie's chair is the kind of space where you can truly relax and catch up.</p>
+            <p class="team-card__phone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              614.832.7628
+            </p>
+            <a href="#booking" class="btn btn--secondary btn--small">Book with Debbie</a>
+          </div>
+        </div>
+
+        <!-- LAUREN -->
+        <div class="team-card reveal reveal-delay-3">
+          <div class="team-card__photo">
+            <!-- REPLACE: Swap with a real portrait of Lauren -->
+            <img src="https://picsum.photos/seed/stylist-lauren/400/530.jpg" alt="Lauren — stylist at Local Roots Salon" loading="lazy">
+          </div>
+          <div class="team-card__info">
+            <h3 class="team-card__name">Lauren</h3>
+            <p class="team-card__role">Stylist</p>
+            <!-- REPLACE: Update specialty and bio -->
+            <p class="team-card__bio">Fresh energy and a sharp eye — Lauren brings creative vision to every cut and style. Whether it's a big change or a trusty refresh, she's all about making it feel effortless.</p>
+            <p class="team-card__phone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              937.441.6007
+            </p>
+            <a href="#booking" class="btn btn--secondary btn--small">Book with Lauren</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       BOOKING CTA
+       ============================================ -->
+  <section class="booking-cta" id="booking" aria-label="Book an appointment">
+    <div class="container reveal">
+      <h2 class="booking-cta__title">Ready to Sit Down & Relax?</h2>
+      <p class="booking-cta__text">We'd love to see you. Book your next appointment through Vagaro — it's quick and easy.</p>
+      <!-- REPLACE: Update this link with your actual Vagaro booking URL -->
+      <a href="https://www.vagaro.com/localrootssalon" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="font-size: 1rem; padding: 1rem 2.5rem;">
+        Book on Vagaro
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+      <p style="margin-top: var(--space-md); font-size: 0.85rem; color: var(--warm-gray);">Or call us at <a href="tel:6147298804" style="color: var(--terracotta-light); text-decoration: underline;">614.729.8804</a> and we'll find a time that works.</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CONTACT
+       ============================================ -->
+  <section class="contact section-padding" id="contact" aria-label="Contact and location">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Find Us</p>
+        <h2 class="section-title">Come Say Hello</h2>
+        <p class="section-subtitle">We're right in the heart of Downtown Pataskala — easy to find and always happy to have you drop in.</p>
+      </div>
+
+      <div class="contact__grid">
+        <div class="contact__info reveal">
+          <div class="contact__block">
+            <h3>Address</h3>
+            <p>
+              <a href="https://maps.google.com/?q=10+Front+Street+Pataskala+OH+43062" target="_blank" rel="noopener noreferrer">
+                10 Front Street<br>Pataskala, Ohio 43062
+              </a>
+            </p>
+          </div>
+
+          <div class="contact__block">
+            <h3>Phone</h3>
+            <a href="tel:6147298804" class="contact__phone">614.729.8804</a>
+          </div>
+
+          <div class="contact__block">
+            <h3>Hours</h3>
+            <!-- REPLACE: Update with actual salon hours -->
+            <p>
+              Monday: Closed<br>
+              Tuesday – Friday: 9:00 AM – 7:00 PM<br>
+              Saturday: 9:00 AM – 5:00 PM<br>
+              Sunday: Closed
+            </p>
+          </div>
+
+          <div class="contact__block">
+            <h3>Follow Us</h3>
+            <div class="contact__social">
+              <a href="https://facebook.com/LocalRootsSalon350" target="_blank" rel="noopener noreferrer" class="contact__social-link" aria-label="Follow Local Roots Salon on Facebook">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.413c0-3.014 1.831-4.669 4.532-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.74-1.956 1.498v2.31h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact__map reveal reveal-delay-2">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3064.2!2d-82.6683!3d39.9726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s10+Front+St%2C+Pataskala%2C+OH+43062!5e0!3m2!1sen!2sus!4v1"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map showing Local Roots Salon at 10 Front Street, Pataskala, Ohio"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__logo">
+          Local Roots
+          <small>Hair Salon</small>
+        </div>
+
+        <nav class="footer__links" aria-label="Footer navigation">
+          <a href="#home" class="footer__link">Home</a>
+          <a href="#about" class="footer__link">About</a>
+          <a href="#services" class="footer__link">Services</a>
+          <a href="#gallery" class="footer__link">Gallery</a>
+          <a href="#team" class="footer__link">Team</a>
+          <a href="#contact" class="footer__link">Contact</a>
+          <a href="#booking" class="footer__link">Book Now</a>
+        </nav>
+
+        <div class="footer__social">
+          <a href="https://facebook.com/LocalRootsSalon350" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.413c0-3.014 1.831-4.669 4.532-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.74-1.956 1.498v2.31h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+
+        <div class="footer__divider"></div>
+
+        <div class="footer__bottom">
+          <p>&copy; <span id="footerYear"></span> Local Roots Salon. All rights reserved.</p>
+          <p class="footer__address">10 Front Street, Pataskala, Ohio 43062</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       JAVASCRIPT
+       ============================================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ---- Footer Year ---- */
+      document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+      /* ---- Sticky Header Scroll Effect ---- */
+      const header = document.getElementById('header');
+      let lastScroll = 0;
+
+      function onScroll() {
+        const y = window.scrollY;
+        if (y > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+        lastScroll = y;
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      /* ---- Mobile Menu ---- */
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileOverlay = document.getElementById('mobileOverlay');
+      const mobileLinks = mobileMenu.querySelectorAll('.mobile-menu__link');
+      const mobileBookBtn = mobileMenu.querySelector('.mobile-menu__book .btn');
+
+      function openMobileMenu() {
+        hamburger.classList.add('active');
+        hamburger.setAttribute('aria-expanded', 'true');
+        mobileMenu.classList.add('open');
+        mobileOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMobileMenu() {
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('open');
+        mobileOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      hamburger.addEventListener('click', function () {
+        if (mobileMenu.classList.contains('open')) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+
+      mobileOverlay.addEventListener('click', closeMobileMenu);
+
+      mobileLinks.forEach(function (link) {
+        link.addEventListener('click', closeMobileMenu);
+      });
+      if (mobileBookBtn) {
+        mobileBookBtn.addEventListener('click', closeMobileMenu);
+      }
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
+
+      /* ---- Smooth Scroll ---- */
+      document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      /* ---- Scroll Reveal ---- */
+      const reveals = document.querySelectorAll('.reveal');
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+        );
+
+        reveals.forEach(function (el) {
+          observer.observe(el);
+        });
+      } else {
+        reveals.forEach(function (el) {
+          el.classList.add('revealed');
+        });
+      }
+
+      /* ---- Gallery Lightbox ---- */
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const galleryItems = document.querySelectorAll('.gallery__item');
+
+      galleryItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+          const img = this.querySelector('img');
+          const caption = this.getAttribute('data-caption') || '';
+          if (img) {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = caption || img.alt;
+            lightbox.classList.add('open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            lightboxClose.focus();
+          }
+        });
+
+        item.setAttribute('tabindex', '0');
+        item.setAttribute('role', 'button');
+        item.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.click();
+          }
+        });
+      });
+
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        lightboxImg.src = '';
+      }
+
+      lightboxClose.addEventListener('click', closeLightbox);
+
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+          closeLightbox();
+        }
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
